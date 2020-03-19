@@ -1,0 +1,35 @@
+class Meteor{
+  
+  PVector pos;
+  PVector vel;
+  PVector acc;
+  int radius = 20;
+  boolean destroyed = false;
+  Ship s;
+  
+  public Meteor(float x, float y, Ship _s){
+    pos = new PVector(x, y);
+    s = _s;
+    acc = PVector.fromAngle(angleBetween(pos.x, pos.y, s.pos.x, s.pos.y));
+  }
+  
+  void update(){
+    
+  
+  }
+  
+  void show(){
+    update();
+    noStroke();
+    fill(255);
+    ellipse(pos.x, pos.y, radius*2, radius*2);
+  }
+  
+  void destroy(){
+    if(!destroyed){
+      radius = radius * 2;
+      destroyed = true;
+    }
+  }
+    
+}

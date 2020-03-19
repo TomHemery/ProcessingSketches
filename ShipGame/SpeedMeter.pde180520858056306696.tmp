@@ -1,0 +1,28 @@
+class SpeedMeter{
+
+  Ship ship;
+  float maxSpeed; 
+  int radius = 60;
+  int padding = 10;
+  float angle;
+  float startAngle = PI/2 + PI/5;
+  float endAngle = 2*PI + 2*PI/5;
+  
+  public SpeedMeter(float _maxSpeed, Ship _ship){
+    this.maxSpeed = _maxSpeed;
+    this.ship = _ship;
+  }
+  
+  void show(){
+    angle = map(ship.vel.mag(), 0, ship.boostSpeed, startAngle, endAngle);
+    noFill();
+    stroke(255, 0, 0);
+    strokeWeight(8);
+    pushMatrix();
+    translate(s.pos.x - width / 2, s.pos.y - height / 2);
+    arc(radius + padding, radius + padding, 
+            radius*2, radius*2, startAngle, angle);
+    popMatrix();
+  }
+
+}
