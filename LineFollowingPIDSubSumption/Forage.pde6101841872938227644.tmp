@@ -1,0 +1,18 @@
+class Forage extends Behaviour{
+  
+  ForageState state = ForageState.LookingForLine;
+  
+  void Update(){
+    
+    Switch(state);
+    
+    output.speed = 20;
+    output.subsume = true;
+  }
+  
+}
+
+enum ForageState {
+  LookingForLine,
+  AligningToLine
+}
